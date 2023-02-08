@@ -20,8 +20,7 @@ class PrimaryButton extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
-        Flexible(
-          flex: 1,
+        Flexible(          
           fit: FlexFit.tight,
           child: ElevatedButton(
             style: ElevatedButton.styleFrom(

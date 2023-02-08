@@ -2,7 +2,9 @@
 
 import 'package:ecommerce_cubit_getit/common/mixin/input_validation_mixin.dart';
 import 'package:ecommerce_cubit_getit/common/widget/form/custom_text_form_field.dart';
+import 'package:ecommerce_cubit_getit/features/auth/login/presentation/cubit/login_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 class LoginPasswordWidget extends StatelessWidget with InputValidationMixin{
@@ -23,7 +25,7 @@ class LoginPasswordWidget extends StatelessWidget with InputValidationMixin{
 
   @override
   Widget build(BuildContext context) {
-    const isObscure = true;
+    final isObscure = context.watch<LoginCubit>().state.isObscure;
 
     return CustomTextFormField(
       labelText: labelText, 
@@ -34,7 +36,7 @@ class LoginPasswordWidget extends StatelessWidget with InputValidationMixin{
       isObscureText: isObscure,
       prefixIcon: IconButton(
         onPressed: () {
-          
+          context.read<LoginCubit>().setIsObscure();
         }, 
         icon: isObscure ? const Icon(Icons.visibility_off) : const Icon(Icons.visibility),
       ),
@@ -48,7 +50,10 @@ class LoginPasswordWidget extends StatelessWidget with InputValidationMixin{
         validators,
       ),
       onChanged: (String? value) {
-        
+        context.read<LoginCubit>().setFormData(
+          key: formKey, 
+          value: value,
+        );
         return null;
       },
     );

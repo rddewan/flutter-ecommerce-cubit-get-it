@@ -2,6 +2,7 @@
 import 'package:ecommerce_cubit_getit/common/error/no_route_screen.dart';
 import 'package:ecommerce_cubit_getit/core/route/notifier/go_router_notifier.dart';
 import 'package:ecommerce_cubit_getit/core/route/route_name.dart';
+import 'package:ecommerce_cubit_getit/core/service_locator.dart';
 import 'package:ecommerce_cubit_getit/features/auth/login/presentation/ui/login_screen.dart';
 import 'package:ecommerce_cubit_getit/features/auth/signup/presentation/ui/signup_screen.dart';
 import 'package:ecommerce_cubit_getit/features/home/presentation/ui/home_screen.dart';
@@ -10,11 +11,9 @@ import 'package:go_router/go_router.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey(debugLabel: 'root');
-final GlobalKey<NavigatorState> _shellNavigatorKey =
-    GlobalKey(debugLabel: 'shell');
 
 class GoRouterProvider {
-  final notifier = GoRouterNotifier();
+  final notifier = getIt.get<GoRouterNotifier>();
   bool isDuplicate = false;
 
   GoRouter goRouter() {
@@ -54,8 +53,7 @@ class GoRouterProvider {
           parentNavigatorKey: _rootNavigatorKey,
           path: '/',
           name: homeRoute,
-          builder: (context, state) =>
-              HomeScreen(key: state.pageKey),
+          builder: (context, state) => HomeScreen(key: state.pageKey),
         ),
 
         GoRoute(
