@@ -45,7 +45,7 @@ class _CheckboxWidgetState extends State<CheckboxWidget> {
         if (field.hasError) ...[
           Text(
             field.errorText!,
-            style: Theme.of(context).textTheme.caption?.copyWith(
+            style: Theme.of(context).textTheme.bodySmall?.copyWith(
               color: Colors.red,
             ),
           ),

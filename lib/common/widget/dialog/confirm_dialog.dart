@@ -46,11 +46,11 @@ mixin ConfirmDialog {
                 children: [ 
                   const Icon(Icons.info),   
                   const SizedBox(height: kMedium),           
-                  Text(title, style: textTheme.headline4),
+                  Text(title, style: textTheme.headlineMedium),
                   const SizedBox(height: kMedium),
                   Text(
                     msg,
-                    style: textTheme.bodyText1,
+                    style: textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
                                  
