@@ -3,10 +3,12 @@ import 'package:ecommerce_cubit_getit/common/error/no_route_screen.dart';
 import 'package:ecommerce_cubit_getit/core/route/notifier/go_router_notifier.dart';
 import 'package:ecommerce_cubit_getit/core/route/route_name.dart';
 import 'package:ecommerce_cubit_getit/core/service_locator.dart';
+import 'package:ecommerce_cubit_getit/features/auth/login/presentation/cubit/login_cubit.dart';
 import 'package:ecommerce_cubit_getit/features/auth/login/presentation/ui/login_screen.dart';
 import 'package:ecommerce_cubit_getit/features/auth/signup/presentation/ui/signup_screen.dart';
 import 'package:ecommerce_cubit_getit/features/home/presentation/ui/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =

@@ -1,3 +1,4 @@
+import 'package:ecommerce_cubit_getit/core/route/notifier/go_router_notifier.dart';
 import 'package:ecommerce_cubit_getit/core/service_locator.dart';
 import 'package:ecommerce_cubit_getit/features/auth/login/presentation/cubit/login_cubit.dart';
 import 'package:ecommerce_cubit_getit/main_widget.dart';

@@ -15,7 +15,7 @@ import 'package:get_it/get_it.dart';
 final getIt = GetIt.instance;
 
 void serviceLocatorInit() { 
-  getIt.registerFactory<GoRouterNotifier>(() => GoRouterNotifier());
+  getIt.registerSingleton<GoRouterNotifier>(GoRouterNotifier());
   getIt.registerSingleton<GoRouterProvider>(GoRouterProvider());
   getIt.registerSingleton<Client>(Client());
   getIt.registerSingleton<UriProvider>(UriProvider());
@@ -23,5 +23,7 @@ void serviceLocatorInit() {
   getIt.registerLazySingleton<ILoginRepository>(() => LoginRepository(getIt()));
   getIt.registerLazySingleton<ILoginService>(() => LoginService(getIt.get<ILoginRepository>()));
   getIt.registerFactory(() => LoginCubit(getIt.get<ILoginService>()));
+
+  
 
 }
