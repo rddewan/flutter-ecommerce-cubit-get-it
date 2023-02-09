@@ -1,6 +1,8 @@
 
 import 'package:ecommerce_cubit_getit/common/widget/button/primary_button.dart';
+import 'package:ecommerce_cubit_getit/features/auth/signup/presentation/controller/signup_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignUpButtonWidget extends StatelessWidget {
   final VoidCallback onPressed;
@@ -8,7 +10,8 @@ class SignUpButtonWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isLoading = false;
+    final isLoading = context.watch<SignUpController>().state.isLoading;
+    
     return PrimaryButton(
       text: 'SignUp',
       isEnabled: isLoading ? false : true,

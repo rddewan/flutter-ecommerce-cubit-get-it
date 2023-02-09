@@ -1,6 +1,6 @@
 
 
-import 'package:ecommerce_cubit_getit/features/auth/login/presentation/cubit/login_cubit.dart';
+import 'package:ecommerce_cubit_getit/features/auth/login/presentation/cubit/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -10,19 +10,22 @@ class LoginErrorWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final errorMsg = context.watch<LoginCubit>().state.errorMsg;
-    return errorMsg == null 
-    ? const SizedBox.shrink()
-    : Center(
-        child: Text(
-          errorMsg,
-          maxLines: 2,
-          overflow: TextOverflow.ellipsis,
-          style: Theme.of(context).textTheme.titleMedium?.copyWith(
-            color: Colors.redAccent,
-          ),
+    final errorMsg = context.watch<LoginController>().state.errorMsg;
+
+    if (errorMsg == null) {
+      return const SizedBox.shrink();
+    }
+
+    return Center(
+      child: Text(
+        errorMsg,
+        maxLines: 2,
+        overflow: TextOverflow.ellipsis,
+        style: Theme.of(context).textTheme.titleMedium?.copyWith(
+          color: Colors.redAccent,
         ),
-      );  
+      ),
+    );  
     
   }
 }

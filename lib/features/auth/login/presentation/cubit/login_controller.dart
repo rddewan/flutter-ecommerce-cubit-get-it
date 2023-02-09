@@ -6,11 +6,11 @@ import 'package:ecommerce_cubit_getit/features/auth/login/application/ilogin_ser
 import 'package:ecommerce_cubit_getit/features/auth/login/presentation/state/login_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class LoginCubit extends Cubit<LoginState> {
+class LoginController extends Cubit<LoginState> {
   final ILoginService _loginService;
   
 
-  LoginCubit(this._loginService) : super(const LoginState());
+  LoginController(this._loginService) : super(const LoginState());
 
   void login() async {
 

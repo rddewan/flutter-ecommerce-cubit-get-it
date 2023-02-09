@@ -3,5 +3,5 @@ import 'package:http/http.dart';
 
 
 extension HttpResponseError on Response {
-  String httpErrorHandler() => 'Request failed \nStatus Code: $statusCode\n Reason:$reasonPhrase';
+  String httpErrorHandler() => 'Request failed - Status Code: $statusCode - Reason:$reasonPhrase';
 }
