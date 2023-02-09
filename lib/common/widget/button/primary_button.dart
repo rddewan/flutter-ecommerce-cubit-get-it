@@ -1,4 +1,5 @@
 
+import 'package:ecommerce_cubit_getit/common/styles/dimens.dart';
 import 'package:flutter/material.dart';
 
 class PrimaryButton extends StatelessWidget {
@@ -22,19 +23,22 @@ class PrimaryButton extends StatelessWidget {
       children: [
         Flexible(          
           fit: FlexFit.tight,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              padding: const EdgeInsets.all(8),
+          child: FilledButton.tonal(
+            style: FilledButton.styleFrom(
+              padding: const EdgeInsets.all(kSmall),
             ),
             onPressed: isEnabled ? onPressed : null, 
             child: isLoading
-            ? const CircularProgressIndicator.adaptive()
+            ? const Padding(
+              padding: EdgeInsets.all(kSmall),
+              child: CircularProgressIndicator.adaptive(),
+            )
             : Text(
               text,
               textAlign: TextAlign.center,
               style: Theme.of(context)
                 .textTheme
-                .headlineSmall?.copyWith(color: Colors.white),
+                .headlineSmall,
             ),
           ),)
       ],
