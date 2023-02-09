@@ -6,7 +6,7 @@ import 'package:ecommerce_cubit_getit/common/mixin/input_validation_mixin.dart';
 import 'package:ecommerce_cubit_getit/common/styles/dimens.dart';
 import 'package:ecommerce_cubit_getit/common/widget/app_scaffold.dart';
 import 'package:ecommerce_cubit_getit/common/widget/form/custom_text_form_field.dart';
-import 'package:ecommerce_cubit_getit/features/auth/login/presentation/cubit/login_cubit.dart';
+import 'package:ecommerce_cubit_getit/features/auth/login/presentation/cubit/login_controller.dart';
 import 'package:ecommerce_cubit_getit/features/auth/login/presentation/ui/widget/login_button_widget.dart';
 import 'package:ecommerce_cubit_getit/features/auth/login/presentation/ui/widget/login_error_widget.dart';
 import 'package:ecommerce_cubit_getit/features/auth/login/presentation/ui/widget/login_password_widget.dart';
@@ -81,7 +81,7 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin{
                         ]
                       ),
                       onChanged: (String? value) {
-                        context.read<LoginCubit>().setFormData(
+                        context.read<LoginController>().setFormData(
                           key: 'email', 
                           value: value,
                         );
@@ -138,7 +138,7 @@ class _LoginScreenState extends State<LoginScreen> with InputValidationMixin{
     final isValid = _formKey.currentState?.validate();
 
     if (isValid != null && isValid) {
-      context.read<LoginCubit>().login();
+      context.read<LoginController>().login();
     }
   }
 }
