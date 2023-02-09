@@ -46,29 +46,39 @@ mixin ConfirmDialog {
                 children: [ 
                   const Icon(Icons.info),   
                   const SizedBox(height: kMedium),           
-                  Text(title, style: textTheme.headlineMedium),
+                  Text(title, style: textTheme.titleMedium),
                   const SizedBox(height: kMedium),
                   Text(
                     msg,
-                    style: textTheme.bodyLarge,
+                    style: textTheme.bodySmall,
                     textAlign: TextAlign.center,
                   ),
                                  
                   const SizedBox(height: kLarge),
 
-                  ElevatedButton.icon(
-                    key: btnNoKey,
-                    onPressed: onNoTap, 
-                    icon: const Icon(Icons.close), 
-                    label: Text(btnNoText),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton.icon(
+                        key: btnNoKey,
+                        onPressed: onNoTap, 
+                        icon: const Icon(Icons.close), 
+                        label: Text(btnNoText),
+                      ),
+
+                      const SizedBox(width: kSmall),
+
+                      ElevatedButton.icon(
+                        key: btnYesKey,
+                        onPressed: onYesTap, 
+                        icon: const Icon(Icons.check), 
+                        label: Text(btnYesText),
+                      ) 
+
+                    ],
                   ),
 
-                  ElevatedButton.icon(
-                    key: btnYesKey,
-                    onPressed: onYesTap, 
-                    icon: const Icon(Icons.check), 
-                    label: Text(btnYesText),
-                  )        
+                         
                                     
                 ],
               ),
