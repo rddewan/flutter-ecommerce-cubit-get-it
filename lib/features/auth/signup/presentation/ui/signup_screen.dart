@@ -45,27 +45,26 @@ class _SignUpScreenState extends State<SignUpScreen>
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<SignUpController, SignUpState>(
-      listenWhen: (previous, current) {
-        debugPrint('listenWhen');
-        return current.isSignUp;
-      },
-      listener: (context, state) {
-        debugPrint('listener');
-        if (state.isSignUp) {
-          _showConfirmDialog();
-        }
-        
-      },
-      builder: (context, state) {
-        return AppScaffoldScrollable(
-          title: const Text("SignUp"),
-          widget: ResponsiveCenterBox(
-            child: Padding(
-              padding: const EdgeInsets.all(kSmall),
-              child: Form(
-                key: _formKey,
-                child: Column(
+    return AppScaffoldScrollable(
+      title: const Text("SignUp"),
+      widget: ResponsiveCenterBox(
+        child: Padding(
+          padding: const EdgeInsets.all(kSmall),
+          child: Form(
+            key: _formKey,
+            child: BlocConsumer<SignUpController, SignUpState>(
+              listenWhen: (previous, current) {
+                debugPrint('listenWhen');
+                return current.isSignUp;
+              },
+              listener: (context, state) {
+                debugPrint('listener');
+                if (state.isSignUp) {
+                  _showConfirmDialog();
+                }
+              },
+              builder: (context, state) {
+                return Column(
                   children: [
                     const SizedBox(
                       height: kMedium,
@@ -216,12 +215,12 @@ class _SignUpScreenState extends State<SignUpScreen>
                     ),
                     SignUpButtonWidget(onPressed: _signUp)
                   ],
-                ),
-              ),
+                );
+              },
             ),
           ),
-        );
-      },
+        ),
+      ),
     );
   }
 
@@ -241,18 +240,18 @@ class _SignUpScreenState extends State<SignUpScreen>
       btnYesText: 'Yes'.hardcoded,
       btnNoText: 'No'.hardcoded,
       onYesTap: () {
-        final navigator = Navigator.of(context,rootNavigator: true);
-        if(navigator.canPop()) {
+        final navigator = Navigator.of(context, rootNavigator: true);
+        if (navigator.canPop()) {
           navigator.pop();
-        }  
+        }
         // navigate to login screen
-        context.go('login');            
+        context.go('login');
       },
       onNoTap: () {
-        final navigator = Navigator.of(context,rootNavigator: true);
-        if(navigator.canPop()) {
+        final navigator = Navigator.of(context, rootNavigator: true);
+        if (navigator.canPop()) {
           navigator.pop();
-        }  
+        }
       },
     );
   }
