@@ -222,7 +222,7 @@ packages:
     description:
       path: "."
       ref: HEAD
-      resolved-ref: ae38f8249ad6d624c445109e403b6488abb73ff8
+      resolved-ref: c2ae6509e3e28b823c2f22d0c305ee8ba1ebbbbb
       url: "https://github.com/rddewan/dewan-image-carousel"
     source: git
     version: "1.0.0"
@@ -409,6 +409,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  intl:
+    dependency: "direct main"
+    description:
+      name: intl
+      sha256: "910f85bce16fb5c6f614e117efa303e85a1731bb0081edf3604a2ae6e9a3cc91"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.17.0"
   io:
     dependency: transitive
     description:

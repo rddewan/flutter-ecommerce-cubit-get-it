@@ -21,6 +21,7 @@ mixin _$HomeState {
   List<CategoryModel> get categories => throw _privateConstructorUsedError;
   List<FeaturedProductModel> get featuredProducts =>
       throw _privateConstructorUsedError;
+  String? get errorMsg => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -36,7 +37,8 @@ abstract class $HomeStateCopyWith<$Res> {
       {List<String> banners,
       List<BrandModel> brands,
       List<CategoryModel> categories,
-      List<FeaturedProductModel> featuredProducts});
+      List<FeaturedProductModel> featuredProducts,
+      String? errorMsg});
 }
 
 /// @nodoc
@@ -56,6 +58,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? brands = null,
     Object? categories = null,
     Object? featuredProducts = null,
+    Object? errorMsg = freezed,
   }) {
     return _then(_value.copyWith(
       banners: null == banners
@@ -74,6 +77,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.featuredProducts
           : featuredProducts // ignore: cast_nullable_to_non_nullable
               as List<FeaturedProductModel>,
+      errorMsg: freezed == errorMsg
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ) as $Val);
   }
 }
@@ -89,7 +96,8 @@ abstract class _$$_HomeStateCopyWith<$Res> implements $HomeStateCopyWith<$Res> {
       {List<String> banners,
       List<BrandModel> brands,
       List<CategoryModel> categories,
-      List<FeaturedProductModel> featuredProducts});
+      List<FeaturedProductModel> featuredProducts,
+      String? errorMsg});
 }
 
 /// @nodoc
@@ -107,6 +115,7 @@ class __$$_HomeStateCopyWithImpl<$Res>
     Object? brands = null,
     Object? categories = null,
     Object? featuredProducts = null,
+    Object? errorMsg = freezed,
   }) {
     return _then(_$_HomeState(
       banners: null == banners
@@ -125,6 +134,10 @@ class __$$_HomeStateCopyWithImpl<$Res>
           ? _value._featuredProducts
           : featuredProducts // ignore: cast_nullable_to_non_nullable
               as List<FeaturedProductModel>,
+      errorMsg: freezed == errorMsg
+          ? _value.errorMsg
+          : errorMsg // ignore: cast_nullable_to_non_nullable
+              as String?,
     ));
   }
 }
@@ -136,7 +149,8 @@ class _$_HomeState implements _HomeState {
       {final List<String> banners = const [],
       final List<BrandModel> brands = const [],
       final List<CategoryModel> categories = const [],
-      final List<FeaturedProductModel> featuredProducts = const []})
+      final List<FeaturedProductModel> featuredProducts = const [],
+      this.errorMsg})
       : _banners = banners,
         _brands = brands,
         _categories = categories,
@@ -180,8 +194,11 @@ class _$_HomeState implements _HomeState {
   }
 
   @override
+  final String? errorMsg;
+
+  @override
   String toString() {
-    return 'HomeState(banners: $banners, brands: $brands, categories: $categories, featuredProducts: $featuredProducts)';
+    return 'HomeState(banners: $banners, brands: $brands, categories: $categories, featuredProducts: $featuredProducts, errorMsg: $errorMsg)';
   }
 
   @override
@@ -194,7 +211,9 @@ class _$_HomeState implements _HomeState {
             const DeepCollectionEquality()
                 .equals(other._categories, _categories) &&
             const DeepCollectionEquality()
-                .equals(other._featuredProducts, _featuredProducts));
+                .equals(other._featuredProducts, _featuredProducts) &&
+            (identical(other.errorMsg, errorMsg) ||
+                other.errorMsg == errorMsg));
   }
 
   @override
@@ -203,7 +222,8 @@ class _$_HomeState implements _HomeState {
       const DeepCollectionEquality().hash(_banners),
       const DeepCollectionEquality().hash(_brands),
       const DeepCollectionEquality().hash(_categories),
-      const DeepCollectionEquality().hash(_featuredProducts));
+      const DeepCollectionEquality().hash(_featuredProducts),
+      errorMsg);
 
   @JsonKey(ignore: true)
   @override
@@ -217,7 +237,8 @@ abstract class _HomeState implements HomeState {
       {final List<String> banners,
       final List<BrandModel> brands,
       final List<CategoryModel> categories,
-      final List<FeaturedProductModel> featuredProducts}) = _$_HomeState;
+      final List<FeaturedProductModel> featuredProducts,
+      final String? errorMsg}) = _$_HomeState;
 
   @override
   List<String> get banners;
@@ -227,6 +248,8 @@ abstract class _HomeState implements HomeState {
   List<CategoryModel> get categories;
   @override
   List<FeaturedProductModel> get featuredProducts;
+  @override
+  String? get errorMsg;
   @override
   @JsonKey(ignore: true)
   _$$_HomeStateCopyWith<_$_HomeState> get copyWith =>
