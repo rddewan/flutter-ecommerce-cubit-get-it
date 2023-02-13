@@ -36,7 +36,7 @@ class GoRouterProvider {
             }
           } else {
             if (!isGoingToLogin && !isGoingToSignUp && !isGoingToNoInternet) {
-              isDuplicate = true;
+              isDuplicate = true;              
               return '/login?from=${state.subloc}';
             }
           }
