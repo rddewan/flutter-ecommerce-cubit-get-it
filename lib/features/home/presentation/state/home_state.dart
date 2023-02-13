@@ -17,5 +17,6 @@ class HomeState with _$HomeState {
     List<CategoryModel> categories,
     @Default([])
     List<FeaturedProductModel> featuredProducts,
+    String? errorMsg,
   }) = _HomeState;
 }
