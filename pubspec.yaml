@@ -26,10 +26,14 @@ dependencies:
   json_annotation: ^4.7.0
   cached_network_image: ^3.2.3
   intl: ^0.17.0
+  hive_flutter: ^1.1.0
+  flutter_secure_storage: ^8.0.0
   dewan_image_carousel:    
     git:
       url: https://github.com/rddewan/dewan-image-carousel
       path: 
+  
+  
 
 dev_dependencies:
   flutter_test:

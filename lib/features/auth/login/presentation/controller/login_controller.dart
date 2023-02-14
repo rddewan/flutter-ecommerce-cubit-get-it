@@ -1,5 +1,6 @@
 
 import 'package:ecommerce_cubit_getit/core/exception/failure.dart';
+import 'package:ecommerce_cubit_getit/core/local/db/hive_box_key_const.dart';
 import 'package:ecommerce_cubit_getit/core/route/notifier/go_router_notifier.dart';
 import 'package:ecommerce_cubit_getit/core/service_locator.dart';
 import 'package:ecommerce_cubit_getit/features/auth/login/application/ilogin_service.dart';
@@ -44,5 +45,11 @@ class LoginController extends Cubit<LoginState> {
 
   void setFormData({required String key, required dynamic value}) {
     emit(state.copyWith(formData: {...state.formData, ...{key:value}}));    
+  }
+
+  void getAccessToken() async {
+    final result = await _loginService.getFromBox<String?>(accessTokenKey);
+    // update login status
+    getIt.get<GoRouterNotifier>().isLoggedIn = result == null ? false : true;    
   }
 }

@@ -1,6 +1,6 @@
 
 
-import 'package:ecommerce_cubit_getit/features/auth/login/presentation/cubit/login_controller.dart';
+import 'package:ecommerce_cubit_getit/features/auth/login/presentation/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
