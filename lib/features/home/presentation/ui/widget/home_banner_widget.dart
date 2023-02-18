@@ -2,7 +2,6 @@
 import 'package:dewan_image_carousel/dewan_image_carousel.dart';
 import 'package:ecommerce_cubit_getit/common/class/break_point.dart';
 import 'package:ecommerce_cubit_getit/features/home/presentation/controller/home_controller.dart';
-import 'package:ecommerce_cubit_getit/features/home/presentation/state/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

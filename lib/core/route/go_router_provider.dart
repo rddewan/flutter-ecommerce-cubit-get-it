@@ -5,12 +5,19 @@ import 'package:ecommerce_cubit_getit/core/route/route_name.dart';
 import 'package:ecommerce_cubit_getit/core/service_locator.dart';
 import 'package:ecommerce_cubit_getit/features/auth/login/presentation/ui/login_screen.dart';
 import 'package:ecommerce_cubit_getit/features/auth/signup/presentation/ui/signup_screen.dart';
+import 'package:ecommerce_cubit_getit/features/cart/presentation/ui/cart_screen.dart';
+import 'package:ecommerce_cubit_getit/features/dashboard/presentation/ui/dashboard_screen.dart';
 import 'package:ecommerce_cubit_getit/features/home/presentation/ui/home_screen.dart';
+import 'package:ecommerce_cubit_getit/features/product/presentation/ui/product_detail_screen.dart';
+import 'package:ecommerce_cubit_getit/features/product/presentation/ui/product_screen.dart';
+import 'package:ecommerce_cubit_getit/features/setting/presentation/ui/setting_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 final GlobalKey<NavigatorState> _rootNavigatorKey =
     GlobalKey(debugLabel: 'root');
+final GlobalKey<NavigatorState> _shellNavigatorKey =
+    GlobalKey(debugLabel: 'shell');
 
 class GoRouterProvider {
   final notifier = getIt.get<GoRouterNotifier>();
@@ -49,13 +56,7 @@ class GoRouterProvider {
         return null;
       },
       routes: <RouteBase>[
-        GoRoute(
-          parentNavigatorKey: _rootNavigatorKey,
-          path: '/',
-          name: homeRoute,
-          builder: (context, state) => HomeScreen(key: state.pageKey),
-        ),
-
+        
         GoRoute(
           parentNavigatorKey: _rootNavigatorKey,
           path: '/login',
@@ -72,6 +73,79 @@ class GoRouterProvider {
             ),
           ],
         ),
+
+        ShellRoute(
+        navigatorKey: _shellNavigatorKey,
+        builder: (context, state, child) {
+          return DashboardScreen(key: state.pageKey, child: child);
+        },
+        routes: [
+          GoRoute(
+            path: '/',
+            name: homeRoute,
+            pageBuilder: (context, state) {
+              return NoTransitionPage(
+                key: state.pageKey,
+                child: HomeScreen(
+                  key: state.pageKey,
+                ),
+              );
+            },            
+          ),
+          GoRoute(
+            path: '/product',
+            name: productRoute,
+            pageBuilder: (context, state) {
+              return NoTransitionPage(
+                key: state.pageKey,
+                child: ProductScreen(
+                  key: state.pageKey,
+                ),
+              );
+            },
+            routes: [
+              GoRoute(
+                path: 'detail/:id',
+                name: productDetailRoute,
+                pageBuilder: (context, state) {
+                  final id = int.parse(state.params['id'].toString());
+                  return NoTransitionPage(
+                    key: state.pageKey,
+                    child: ProductDetailScreen(
+                      id: id,
+                      key: state.pageKey,
+                    ),
+                  );
+                },
+              ),
+            ],
+          ),
+          GoRoute(
+            path: '/cart',
+            name: cartRoute,
+            pageBuilder: (context, state) {
+              return NoTransitionPage(
+                key: state.pageKey,
+                child: CartScreen(
+                  key: state.pageKey,
+                ),
+              );
+            },
+          ),
+          GoRoute(
+            path: '/setting',
+            name: settingRoute,
+            pageBuilder: (context, state) {
+              return NoTransitionPage(
+                key: state.pageKey,
+                child: SettingScreen(
+                  key: state.pageKey,
+                ),
+              );
+            },
+          ),
+        ],
+      ),
         
       ],
       errorBuilder: (context, state) => NoRouteScreen(

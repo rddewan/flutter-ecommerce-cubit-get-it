@@ -20,7 +20,7 @@ class LoginService implements ILoginService {
       final response = await _loginRepository.login(request);   
 
       await addToBox(accessTokenKey, response.accessToken);
-      final result = await addToBox(userIdKey, response..userId);
+      final result = await addToBox(userIdKey, response.userId);
 
       return result;    
       

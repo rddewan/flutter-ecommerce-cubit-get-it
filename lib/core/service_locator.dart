@@ -18,6 +18,7 @@ import 'package:ecommerce_cubit_getit/features/auth/login/presentation/controlle
 import 'package:ecommerce_cubit_getit/features/auth/signup/application/isign_up_service.dart';
 import 'package:ecommerce_cubit_getit/features/auth/signup/application/sign_up_service.dart';
 import 'package:ecommerce_cubit_getit/features/auth/signup/data/api/isign_up_api_service.dart';
+import 'package:ecommerce_cubit_getit/features/auth/signup/data/api/sign_up_api_service.dart';
 import 'package:ecommerce_cubit_getit/features/auth/signup/data/repository/isign_up_repository.dart';
 import 'package:ecommerce_cubit_getit/features/auth/signup/data/repository/sign_up_repository.dart';
 import 'package:ecommerce_cubit_getit/features/auth/signup/presentation/controller/signup_controller.dart';
@@ -28,14 +29,18 @@ import 'package:ecommerce_cubit_getit/features/home/data/api/ihome_api.dart';
 import 'package:ecommerce_cubit_getit/features/home/data/repository/home_repository.dart';
 import 'package:ecommerce_cubit_getit/features/home/data/repository/ihome_repository.dart';
 import 'package:ecommerce_cubit_getit/features/home/presentation/controller/home_controller.dart';
+import 'package:ecommerce_cubit_getit/features/setting/application/isetting_service.dart';
+import 'package:ecommerce_cubit_getit/features/setting/application/setting_service.dart';
+import 'package:ecommerce_cubit_getit/features/setting/data/repository/isetting_repository.dart';
+import 'package:ecommerce_cubit_getit/features/setting/data/repository/setting_repository.dart';
+import 'package:ecommerce_cubit_getit/features/setting/presentation/controller/setting_controller.dart';
 import 'package:http/http.dart';
 import 'package:get_it/get_it.dart';
-
-import '../features/auth/signup/data/api/sign_up_api_service.dart';
 
 final getIt = GetIt.instance;
 
 Future<void> serviceLocatorInit() async { 
+  
   getIt.registerSingleton<GoRouterNotifier>(GoRouterNotifier());
   getIt.registerSingleton<GoRouterProvider>(GoRouterProvider());
   getIt.registerSingleton<Client>(Client());
@@ -79,6 +84,22 @@ Future<void> serviceLocatorInit() async {
   ));
   getIt.registerFactory(() => HomeController(getIt.get<IHomeService>()));
 
+  // Setting Feature
+  getIt.registerSingleton<ISettingRepository>(
+    SettingRepository(
+      getIt.get<HiveBoxProvider>().provideSettingBox()
+    ),
+  );
+  getIt.registerSingleton<ISettingService>(
+    SettingService(
+      getIt.get<ISettingRepository>()
+    ),
+  );
+
+  getIt.registerFactory(() => SettingController(
+    getIt.get<ISettingService>(),),
+  );
+  getIt.get<SettingController>().isLoggedIn();
   
 
 }
